@@ -1,8 +1,7 @@
 # StockTrackingFrontend
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
 <img src="https://i.hizliresim.com/kBpKrh.png" width="608">
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
 ## Development server
 
