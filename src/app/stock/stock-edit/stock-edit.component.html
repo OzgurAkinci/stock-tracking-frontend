@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{stock.stockCode ? stock.stockCode : 'New Stock'}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #form="ngForm">
+    <div class="form-group">
+      <label for="stockCode">Stock Code</label>
+      <div class="input-group">
+        <input id="stockCode" [(ngModel)]="stock.stockCode" #stockCode="ngModel" (blur)="changedEvent()" class="form-control" name="stockCode" required>
+      </div>
+      <div *ngIf="(stockCode.errors?.required && submitted) || ( stockCode.errors?.required&& (stockCode.dirty || stockCode.touched))"
+           class="alert alert-danger">
+        <div *ngIf="stockCode.errors.required">
+          Stock Code is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="stockCode">Product Name</label>
+      <div class="input-group">
+        <input id="productName" [(ngModel)]="stock.productName" [disabled]="isDisabled" #productName="ngModel" class="form-control" name="productName" required>
+      </div>
+      <div *ngIf="(productName.errors?.required && submitted) || ( productName.errors?.required&& (productName.dirty || productName.touched))"
+           class="alert alert-danger">
+        <div *ngIf="productName.errors.required">
+          Product Name is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="stockCode">Quantity</label>
+      <div class="input-group">
+        <input type="number" id="quantity" [(ngModel)]="stock.quantity" #quantity="ngModel" class="form-control" name="quantity" required>
+      </div>
+      <div *ngIf="(quantity.errors?.required && submitted) || ( quantity.errors?.required&& (quantity.dirty || quantity.touched))"
+           class="alert alert-danger">
+        <div *ngIf="quantity.errors.required">
+          Quantity is required.
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-success" (click)="save(form)">Save</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
