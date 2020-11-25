@@ -1,0 +1,31 @@
+<div class="col-md-6 offset-3" style="margin-top:50px;">
+  <p>Rows for <code>Stock Table</code></p>
+  <div class="row">
+    <div class="col-md-12" style="margin-bottom: 10px;">
+      <button class="btn btn-info float-right" (click)="open()">New</button>
+    </div>
+  </div>
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Stock Code</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let stock of stocks; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ stock.stockCode }}</td>
+      <td>{{ stock.productName }}</td>
+      <td>{{ stock.quantity | number }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="openDeleteConfirmationDialog(stock.id)">Delete</button> &nbsp;
+        <button class="btn btn-info" (click)="open(stock)">Edit</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
